@@ -3,6 +3,8 @@ class Conversion:
         """
         Convierte temperatura de Celsius a Fahrenheit.
         
+        prueba linea de cambio
+
         Args:
             celsius (float): Temperatura en grados Celsius
             
