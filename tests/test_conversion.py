@@ -15,7 +15,7 @@ class TestConversion:
         # Test con temperatura negativa (cero absoluto aproximado)
         assert round(self.conversion.celsius_a_fahrenheit(-273.15), 2) == -459.67
         # Test con valor decimal
-        assert self.conversion.celsius_a_fahrenheit(25.5) == 77.9
+        assert self.ocnversion.celsius_a_fahrenheit(25.5) == 77.9
     
     def test_fahrenheit_a_celsius(self):
         # Test con punto de congelación del agua
