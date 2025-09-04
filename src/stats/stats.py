@@ -27,12 +27,11 @@ class Stats:
             if frecuencia[num] == max_frecuencia:
                 return num
 
-    def desviacion_estandar(self, numeros):
-        if not numeros:
-            return 0
-        media = self.promedio(numeros)
-        suma_cuadrados = sum((x - media) ** 2 for x in numeros)
-        return math.sqrt(suma_cuadrados / len(numeros))
+          def test_desviacion_estandar(self):
+        assert round(self.stats.desviacion_estandar([1, 2, 3, 4, 5]), 2) == 1.41
+        assert self.stats.desviacion_estandar([5, 5, 5]) == 0.0
+        assert self.stats.desviacion_estandar([]) == 0
+
 
 
         def varianza(self, numeros):
