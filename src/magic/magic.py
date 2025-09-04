@@ -64,13 +64,14 @@ class Magic:
         return tri
 
 
-    def factorial(self, n: int) -> int:
+      def factorial(self, n: int) -> int:
         if n < 0:
             raise ValueError("n debe ser no negativo")
-        res = 1
+        r = 1
         for k in range(2, n + 1):
-            res *= k
-        return res
+            r *= k
+        return r
+
 
     def mcd(self, a: int, b: int) -> int:
         a, b = abs(a), abs(b)
