@@ -31,19 +31,15 @@ class Magic:
             i += 6
         return True
 
-    def generar_primos(self, n: int) -> list:
+       def generar_primos(self, n: int) -> list:
         if n < 2:
             return []
-        # Criba de Eratóstenes hasta n (inclusive)
-        es_primo = [True] * (n + 1)
-        es_primo[0] = es_primo[1] = False
-        p = 2
-        while p * p <= n:
-            if es_primo[p]:
-                for m in range(p * p, n + 1, p):
-                    es_primo[m] = False
-            p += 1
-        return [i for i in range(2, n + 1) if es_primo[i]]
+        primos = []
+        for num in range(2, n + 1):
+            if self.es_primo(num):
+                primos.append(num)
+        return primos
+
 
     def es_numero_perfecto(self, n: int) -> bool:
         if n <= 1:
