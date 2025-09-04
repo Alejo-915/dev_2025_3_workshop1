@@ -1,7 +1,5 @@
 class Logica:
-    """
-    Clase con métodos para realizar operaciones de lógica booleana y algoritmos.
-    """
+ 
     
     def AND(self, a, b):
         return a and b
