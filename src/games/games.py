@@ -2,22 +2,15 @@ import random
 
 class Games:
     # metodo para determinar el ganador en piedra papel tijera
-    def piedra_papel_tijera(self, jugador1, jugador2):
-        reglas = {
-            "piedra": "tijera",
-            "tijera": "papel",
-            "papel": "piedra"
-        }
-        jugador1 = jugador1.lower()
-        jugador2 = jugador2.lower()
-        if jugador1 not in reglas or jugador2 not in reglas:
-            return "invalid"
-        if jugador1 == jugador2:
-            return "empate"
-        elif reglas[jugador1] == jugador2:
-            return "jugador1"
-        else:
-            return "jugador2"
+  def piedra_papel_tijera(self, jugador1, jugador2):
+    reglas = {"piedra": "tijera", "tijera": "papel", "papel": "piedra"}
+    jugador1, jugador2 = jugador1.lower(), jugador2.lower()
+    if jugador1 not in reglas or jugador2 not in reglas:
+        return "invalid"
+    if jugador1 == jugador2:
+        return "empate"
+    return "jugador1" if reglas[jugador1] == jugador2 else "jugador2"
+
 
     # metodo para dar pistas en juego de adivinar numero
         # metodo para dar pistas en juego de adivinar numero
