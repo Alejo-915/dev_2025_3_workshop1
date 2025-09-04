@@ -53,18 +53,16 @@ class Magic:
         return suma == n
 
 
-    def triangulo_pascal(self, filas: int) -> list:
+      def triangulo_pascal(self, filas: int) -> list:
         if filas <= 0:
             return []
         tri = [[1]]
         for _ in range(1, filas):
             prev = tri[-1]
-            fila = [1]
-            for j in range(1, len(prev)):
-                fila.append(prev[j - 1] + prev[j])
-            fila.append(1)
+            fila = [1] + [prev[j - 1] + prev[j] for j in range(1, len(prev))] + [1]
             tri.append(fila)
         return tri
+
 
     def factorial(self, n: int) -> int:
         if n < 0:
