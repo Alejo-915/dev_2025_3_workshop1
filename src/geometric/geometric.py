@@ -9,8 +9,9 @@ class Geometria:
         return 2 * (base + altura)
 
     # circulo
-    def area_circulo(self, radio):
-        return math.pi * radio ** 2
+       def area_circulo(self, radio):
+        return math.pi * (radio ** 2)
+
 
     def perimetro_circulo(self, radio):
         return 2 * math.pi * radio
