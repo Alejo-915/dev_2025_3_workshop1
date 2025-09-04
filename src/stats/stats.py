@@ -27,7 +27,7 @@ class Stats:
             if frecuencia[num] == max_frecuencia:
                 return num
 
-          def test_desviacion_estandar(self):
+            def test_desviacion_estandar(self):
         assert round(self.stats.desviacion_estandar([1, 2, 3, 4, 5]), 2) == 1.41
         assert self.stats.desviacion_estandar([5, 5, 5]) == 0.0
         assert self.stats.desviacion_estandar([]) == 0
