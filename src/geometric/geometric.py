@@ -39,19 +39,18 @@ class Geometria:
         return (diagonal_mayor * diagonal_menor) / 2
 
 
-    # pentagono regular
-    def area_pentagono_regular(self, lado, apotema):
+        def area_pentagono_regular(self, lado, apotema):
         return (5 * lado * apotema) / 2
 
     def perimetro_pentagono_regular(self, lado):
         return 5 * lado
 
-    # hexagono regular
     def area_hexagono_regular(self, lado, apotema):
         return (6 * lado * apotema) / 2
 
     def perimetro_hexagono_regular(self, lado):
         return 6 * lado
+
 
     # cubo
     def volumen_cubo(self, lado):
