@@ -35,11 +35,9 @@ class Stats:
         return math.sqrt(suma_cuadrados / len(numeros))
 
 
-    def varianza(self, numeros):
-        # si la lista esta vacia retorno 0 como varianza nula
+        def varianza(self, numeros):
         if not numeros:
             return 0
-        # la varianza es el cuadrado de la desviacion estandar
         return self.desviacion_estandar(numeros) ** 2
 
     def rango(self, numeros):
