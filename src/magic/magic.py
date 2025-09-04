@@ -41,18 +41,17 @@ class Magic:
         return primos
 
 
-    def es_numero_perfecto(self, n: int) -> bool:
+        def es_numero_perfecto(self, n: int) -> bool:
         if n <= 1:
             return False
         suma = 1
-        i = 2
-        while i * i <= n:
+        for i in range(2, int(n**0.5) + 1):
             if n % i == 0:
                 suma += i
-                if i * i != n:
+                if i != n // i:
                     suma += n // i
-            i += 1
         return suma == n
+
 
     def triangulo_pascal(self, filas: int) -> list:
         if filas <= 0:
