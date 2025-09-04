@@ -6,20 +6,17 @@ class Stats:
         return sum(numeros) / len(numeros) if numeros else 0
 
 
-    def mediana(self, numeros):
-        # si la lista esta vacia retorno 0 como valor neutro
+       def mediana(self, numeros):
         if not numeros:
             return 0
-        # ordeno los numeros para encontrar el valor central
         numeros_ordenados = sorted(numeros)
         n = len(numeros_ordenados)
         mitad = n // 2
-        # si la cantidad es par promedio los dos del centro
         if n % 2 == 0:
-            return (numeros_ordenados[mitad - 1] + numeros_ordenados[mitad]) / 2
+            return (numeros_ordenados[mitad-1] + numeros_ordenados[mitad]) / 2
         else:
-            # si es impar retorno el valor central directamente
             return float(numeros_ordenados[mitad])
+
 
     def moda(self, numeros):
         # si la lista esta vacia no hay moda
