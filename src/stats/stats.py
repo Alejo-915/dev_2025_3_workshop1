@@ -3,8 +3,8 @@ import math
 
 class Stats:
     def promedio(self, numeros):
-        # si la lista esta vacia retorno 0 para evitar division por cero
         return sum(numeros) / len(numeros) if numeros else 0
+
 
     def mediana(self, numeros):
         # si la lista esta vacia retorno 0 como valor neutro
