@@ -57,11 +57,13 @@ class Games:
         return "empate"
 
     # metodo para generar combinacion aleatoria de colores para mastermind
+      # metodo para generar combinacion aleatoria de colores para mastermind
     def generar_combinacion_mastermind(self, longitud, colores_disponibles):
         resultado = []
         for _ in range(longitud):
             resultado.append(random.choice(colores_disponibles))
         return resultado
+
 
     # metodo para validar movimiento de torre en ajedrez
     def validar_movimiento_torre_ajedrez(self, desde_fila, desde_col, hasta_fila, hasta_col, tablero):
