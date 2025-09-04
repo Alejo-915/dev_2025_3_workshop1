@@ -20,6 +20,7 @@ class Games:
             return "jugador2"
 
     # metodo para dar pistas en juego de adivinar numero
+        # metodo para dar pistas en juego de adivinar numero
     def adivinar_numero_pista(self, numero_secreto, intento):
         if intento == numero_secreto:
             return "correcto"
@@ -27,6 +28,7 @@ class Games:
             return "muy alto"
         else:
             return "muy bajo"
+
 
     # metodo para verificar ganador en ta te ti
     def ta_te_ti_ganador(self, tablero):
