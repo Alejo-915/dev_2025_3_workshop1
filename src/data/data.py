@@ -1,107 +1,128 @@
 class Data:
-    
-    # metodo para invertir una lista sin usar slicing
     def invertir_lista(self, lista):
-        resultado = []
-        # recorro la lista desde el final hacia el inicio
-        for i in range(len(lista) - 1, -1, -1):
-            resultado.append(lista[i])
-        return resultado
 
-    # metodo para buscar un elemento en la lista
+        invertida = []
+        for i in range(len(lista) - 1, -1, -1):
+            invertida.append(lista[i])
+        return invertida
+
     def buscar_elemento(self, lista, elemento):
-        # recorro elemento por elemento
+
         for i in range(len(lista)):
             if lista[i] == elemento:
-                return i  # si lo encuentro devuelvo el indice
-        return -1  # si no esta retorno -1
+                return i
+        return -1
 
-    # metodo para eliminar duplicados manteniendo el orden original
     def eliminar_duplicados(self, lista):
         resultado = []
-        vistos = set()  # uso set para mejorar eficiencia
-        for item in lista:
-            if item not in vistos:
-                resultado.append(item)
-                vistos.add(item)
+        vistos = set()  
+        for elem in lista:
+            clave = (elem, type(elem))
+            if clave not in vistos:
+                vistos.add(clave)
+                resultado.append(elem)
         return resultado
 
-    # metodo para mezclar dos listas ordenadas en una sola lista ordenada
+
     def merge_ordenado(self, lista1, lista2):
+
         i, j = 0, 0
         resultado = []
-        # comparo elementos de ambas listas mientras tengan valores
         while i < len(lista1) and j < len(lista2):
             if lista1[i] <= lista2[j]:
-                resultado.append(lista1[i])
-                i += 1
+                resultado.append(lista1[i]); i += 1
             else:
-                resultado.append(lista2[j])
-                j += 1
-        # agrego lo que sobre de lista1
-        resultado.extend(lista1[i:])
-        # agrego lo que sobre de lista2
-        resultado.extend(lista2[j:])
+                resultado.append(lista2[j]); j += 1
+        while i < len(lista1):
+            resultado.append(lista1[i]); i += 1
+        while j < len(lista2):
+            resultado.append(lista2[j]); j += 1
         return resultado
 
-    # metodo para rotar una lista k posiciones a la derecha
     def rotar_lista(self, lista, k):
-        if not lista:  # si esta vacia devuelvo lista vacia
+
+        if not lista:
             return []
-        k = k % len(lista)  # ajusto k para que no sea mayor al tamano
+        n = len(lista)
+        k = k % n
         return lista[-k:] + lista[:-k]
 
-    # metodo para encontrar el numero faltante en una secuencia 1..n
     def encuentra_numero_faltante(self, lista):
-        n = len(lista) + 1  # el tamano real deberia ser n
+
+        n = len(lista) + 1
         suma_esperada = n * (n + 1) // 2
-        suma_actual = sum(lista)
-        return suma_esperada - suma_actual
+        return suma_esperada - sum(lista)
 
-    # metodo para verificar si conjunto1 es subconjunto de conjunto2
     def es_subconjunto(self, conjunto1, conjunto2):
-        return set(conjunto1).issubset(set(conjunto2))
 
-    # implementacion de una pila con funciones internas
+        for elem in conjunto1:
+            if elem not in conjunto2:
+                return False
+        return True
+
     def implementar_pila(self):
-        pila = []
 
-        def push(x):
-            pila.append(x)
+        stack = []
+
+        def push(item):
+            stack.append(item)
 
         def pop():
-            return pila.pop() if pila else None
+            if not is_empty():
+                return stack.pop()
+            return None
 
         def peek():
-            return pila[-1] if pila else None
+            if not is_empty():
+                return stack[-1]
+            return None
 
         def is_empty():
-            return len(pila) == 0
+            return len(stack) == 0
 
-        # devuelvo un diccionario con las operaciones
-        return {"push": push, "pop": pop, "peek": peek, "is_empty": is_empty}
+        return {
+            "push": push,
+            "pop": pop,
+            "peek": peek,
+            "is_empty": is_empty,
+            "stack": stack,
+        }
 
-    # implementacion de una cola con funciones internas
     def implementar_cola(self):
+
         cola = []
 
-        def enqueue(x):
-            cola.append(x)
+        def enqueue(item):
+            cola.append(item)
 
         def dequeue():
-            return cola.pop(0) if cola else None
+            if not is_empty():
+                return cola.pop(0)
+            return None
 
         def peek():
-            return cola[0] if cola else None
+            if not is_empty():
+                return cola[0]
+            return None
 
         def is_empty():
             return len(cola) == 0
 
-        # devuelvo un diccionario con las operaciones
-        return {"enqueue": enqueue, "dequeue": dequeue, "peek": peek, "is_empty": is_empty}
+        return {
+            "enqueue": enqueue,
+            "dequeue": dequeue,
+            "peek": peek,
+            "is_empty": is_empty,
+            "cola": cola,
+        }
 
-    # metodo para calcular la transpuesta de una matriz
     def matriz_transpuesta(self, matriz):
-        if not matriz:  # caso matriz vacia
+
+        if not matriz:
             return []
-        return [list(fila) for fila in zip(*matriz)]
+        filas = len(matriz)
+        columnas = len(matriz[0])
+        for fila in matriz:
+            if len(fila) != columnas:
+                raise ValueError("Todas las filas deben tener la misma longitud")
+        return [[matriz[i][j] for i in range(filas)] for j in range(columnas)]
