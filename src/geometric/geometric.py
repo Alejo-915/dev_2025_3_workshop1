@@ -32,12 +32,12 @@ class Geometria:
                 lado2 + lado3 > lado1)
 
     # trapecio
-    def area_trapecio(self, base_mayor, base_menor, altura):
+       def area_trapecio(self, base_mayor, base_menor, altura):
         return ((base_mayor + base_menor) * altura) / 2
 
-    # rombo
     def area_rombo(self, diagonal_mayor, diagonal_menor):
         return (diagonal_mayor * diagonal_menor) / 2
+
 
     # pentagono regular
     def area_pentagono_regular(self, lado, apotema):
