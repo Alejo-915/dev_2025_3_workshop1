@@ -40,9 +40,8 @@ class Stats:
             return 0
         return self.desviacion_estandar(numeros) ** 2
 
-    def rango(self, numeros):
-        # si la lista esta vacia no hay rango
+        def rango(self, numeros):
         if not numeros:
             return 0
-        # rango es la diferencia entre el maximo y el minimo
         return max(numeros) - min(numeros)
+
