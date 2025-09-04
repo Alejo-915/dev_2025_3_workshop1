@@ -34,10 +34,11 @@ class Stats:
 
 
 
-        def varianza(self, numeros):
-        if not numeros:
-            return 0
-        return self.desviacion_estandar(numeros) ** 2
+           def test_varianza(self):
+        assert round(self.stats.varianza([1, 2, 3, 4, 5]), 1) == 2.0
+        assert self.stats.varianza([5, 5, 5]) == 0.0
+        assert self.stats.varianza([]) == 0
+
 
         def rango(self, numeros):
         if not numeros:
