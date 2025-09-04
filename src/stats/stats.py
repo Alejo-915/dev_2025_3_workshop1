@@ -1,47 +1,47 @@
-from collections import Counter
-import math
-
 class Stats:
+    
     def promedio(self, numeros):
-        return sum(numeros) / len(numeros) if numeros else 0
-
-
-       def mediana(self, numeros):
         if not numeros:
             return 0
-        numeros_ordenados = sorted(numeros)
-        n = len(numeros_ordenados)
+        return sum(numeros) / len(numeros)
+
+    def mediana(self, numeros):
+        if not numeros:
+            return 0
+        numeros = sorted(numeros)
+        n = len(numeros)
         mitad = n // 2
         if n % 2 == 0:
-            return (numeros_ordenados[mitad-1] + numeros_ordenados[mitad]) / 2
-        else:
-            return float(numeros_ordenados[mitad])
+            return (numeros[mitad - 1] + numeros[mitad]) / 2
+        return numeros[mitad]
 
-
-       def moda(self, numeros):
+    def moda(self, numeros):
         if not numeros:
             return None
-        frecuencia = Counter(numeros)
-        max_frecuencia = max(frecuencia.values())
+        frecuencia = {}
+        moda_val = numeros[0]
+        max_freq = 0
         for num in numeros:
-            if frecuencia[num] == max_frecuencia:
-                return num
+            frecuencia[num] = frecuencia.get(num, 0) + 1
+            if frecuencia[num] > max_freq:
+                max_freq = frecuencia[num]
+                moda_val = num
+        return moda_val
 
-            def test_desviacion_estandar(self):
-        assert round(self.stats.desviacion_estandar([1, 2, 3, 4, 5]), 2) == 1.41
-        assert self.stats.desviacion_estandar([5, 5, 5]) == 0.0
-        assert self.stats.desviacion_estandar([]) == 0
+    def desviacion_estandar(self, numeros):
+        if not numeros:
+            return 0
+        media = sum(numeros) / len(numeros)
+        varianza = sum((x - media) ** 2 for x in numeros) / len(numeros)
+        return varianza ** 0.5
 
+    def varianza(self, numeros):
+        if not numeros:
+            return 0
+        media = sum(numeros) / len(numeros)
+        return sum((x - media) ** 2 for x in numeros) / len(numeros)
 
-
-           def test_varianza(self):
-        assert round(self.stats.varianza([1, 2, 3, 4, 5]), 1) == 2.0
-        assert self.stats.varianza([5, 5, 5]) == 0.0
-        assert self.stats.varianza([]) == 0
-
-
-        def rango(self, numeros):
+    def rango(self, numeros):
         if not numeros:
             return 0
         return max(numeros) - min(numeros)
-
