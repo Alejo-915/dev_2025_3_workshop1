@@ -5,7 +5,7 @@ class Geometria:
         return base * altura
 
 
-    def perimetro_rectangulo(self, base, altura):
+      def perimetro_rectangulo(self, base, altura):
         return 2 * (base + altura)
 
     # circulo
