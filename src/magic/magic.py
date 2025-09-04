@@ -1,48 +1,41 @@
 class Magic:
-   
-
-    def fibonacci(self, n: int) -> int:
+    def fibonacci(self, n):
         if n < 0:
-            raise ValueError("n debe ser no negativo")
+            raise ValueError("n debe ser un número no negativo")
+        if n == 0:
+            return 0
+        if n == 1:
+            return 1
         a, b = 0, 1
-        for _ in range(n):
+        for _ in range(2, n + 1):
             a, b = b, a + b
-        return a
+        return b
 
-    def fibonacci(self, n: int) -> int:
-    if n < 0:
-        raise ValueError("n debe ser no negativo")
-    a, b = 0, 1
-    for _ in range(n):
-        a, b = b, a + b
-    return a
+    def secuencia_fibonacci(self, n):
+        if n <= 0:
+            return []
+        sec = [0, 1]
+        while len(sec) < n:
+            sec.append(sec[-1] + sec[-2])
+        return sec[:n]
 
-    def es_primo(self, n: int) -> bool:
-        if n <= 1:
+    def es_primo(self, n):
+        if n < 2:
             return False
-        if n <= 3:
+        if n == 2:
             return True
-        if n % 2 == 0 or n % 3 == 0:
-            return False
-        i = 5
-        while i * i <= n:
-            if n % i == 0 or n % (i + 2) == 0:
+        if n % 2 == 0:
+            return False      
+        for i in range(3, int(n**0.5) + 1, 2):
+            if n % i == 0:
                 return False
-            i += 6
         return True
 
-       def generar_primos(self, n: int) -> list:
+    def generar_primos(self, n):
+        return [i for i in range(2, n + 1) if self.es_primo(i)]
+
+    def es_numero_perfecto(self, n):
         if n < 2:
-            return []
-        primos = []
-        for num in range(2, n + 1):
-            if self.es_primo(num):
-                primos.append(num)
-        return primos
-
-
-        def es_numero_perfecto(self, n: int) -> bool:
-        if n <= 1:
             return False
         suma = 1
         for i in range(2, int(n**0.5) + 1):
@@ -52,81 +45,57 @@ class Magic:
                     suma += n // i
         return suma == n
 
-
-      def triangulo_pascal(self, filas: int) -> list:
+    def triangulo_pascal(self, filas):
         if filas <= 0:
             return []
         tri = [[1]]
-        for _ in range(1, filas):
-            prev = tri[-1]
-            fila = [1] + [prev[j - 1] + prev[j] for j in range(1, len(prev))] + [1]
+        for i in range(1, filas):
+            fila = [1]
+            for j in range(1, i):
+                fila.append(tri[i - 1][j - 1] + tri[i - 1][j])
+            fila.append(1)
             tri.append(fila)
         return tri
 
-
-      def factorial(self, n: int) -> int:
+    def factorial(self, n):
         if n < 0:
-            raise ValueError("n debe ser no negativo")
-        r = 1
-        for k in range(2, n + 1):
-            r *= k
-        return r
+            raise ValueError("El factorial no está definido para negativos")
+        res = 1
+        for i in range(2, n + 1):
+            res *= i
+        return res
 
-
-    def mcd(self, a: int, b: int) -> int:
-        a, b = abs(a), abs(b)
-        while b != 0:
+    def mcd(self, a, b):
+        while b:
             a, b = b, a % b
-        return a
+        return abs(a)
 
-    def mcm(self, a: int, b: int) -> int:
+    def mcm(self, a, b):
         if a == 0 or b == 0:
             return 0
         return abs(a * b) // self.mcd(a, b)
 
-    def suma_digitos(self, n: int) -> int:
-        n = abs(n)
-        s = 0
-        if n == 0:
-            return 0
-        while n > 0:
-            s += n % 10
-            n //= 10
-        return s
+    def suma_digitos(self, n):
+        return sum(int(d) for d in str(abs(n)))
 
-    def es_numero_armstrong(self, n: int) -> bool:
-        if n < 0:
-            return False
-        s = str(n)
-        p = len(s)
-        total = sum(int(d) ** p for d in s)
-        return total == n
+    def es_numero_armstrong(self, n):
+        digitos = str(n)
+        k = len(digitos)
+        return n == sum(int(d) ** k for d in digitos)
 
-    def es_cuadrado_magico(self, matriz: list) -> bool:
-        # Debe ser matriz no vacía y cuadrada
-        if not matriz or not all(isinstance(f, list) for f in matriz):
+    def es_cuadrado_magico(self, matriz):
+        if not matriz or len(matriz) != len(matriz[0]):
             return False
         n = len(matriz)
-        if any(len(f) != n for f in matriz):
-            return False
-
-        # Suma objetivo: suma de la primera fila
-        objetivo = sum(matriz[0])
-
-        # Comprobar filas
+        suma_ref = sum(matriz[0])
         for fila in matriz:
-            if sum(fila) != objetivo:
+            if sum(fila) != suma_ref:
                 return False
-
-        # Comprobar columnas
-        for c in range(n):
-            if sum(matriz[r][c] for r in range(n)) != objetivo:
+        for j in range(n):
+            if sum(matriz[i][j] for i in range(n)) != suma_ref:
                 return False
-
-        # Comprobar diagonales
-        if sum(matriz[i][i] for i in range(n)) != objetivo:
+        if sum(matriz[i][i] for i in range(n)) != suma_ref:
             return False
-        if sum(matriz[i][n - 1 - i] for i in range(n)) != objetivo:
+        if sum(matriz[i][n - 1 - i] for i in range(n)) != suma_ref:
             return False
-
         return True
