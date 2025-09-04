@@ -53,18 +53,18 @@ class Geometria:
 
 
     # cubo
-    def volumen_cubo(self, lado):
+       def volumen_cubo(self, lado):
         return lado ** 3
 
     def area_superficie_cubo(self, lado):
         return 6 * (lado ** 2)
 
-    # esfera
     def volumen_esfera(self, radio):
         return (4/3) * math.pi * (radio ** 3)
 
     def area_superficie_esfera(self, radio):
         return 4 * math.pi * (radio ** 2)
+
 
     # cilindro
     def volumen_cilindro(self, radio, altura):
