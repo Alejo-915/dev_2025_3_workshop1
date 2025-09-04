@@ -13,7 +13,7 @@ class Geometria:
         return math.pi * (radio ** 2)
 
 
-    def perimetro_circulo(self, radio):
+       def perimetro_circulo(self, radio):
         return 2 * math.pi * radio
 
     # triangulo
