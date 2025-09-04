@@ -18,17 +18,15 @@ class Stats:
             return float(numeros_ordenados[mitad])
 
 
-    def moda(self, numeros):
-        # si la lista esta vacia no hay moda
+       def moda(self, numeros):
         if not numeros:
             return None
-        # uso counter para contar frecuencias
         frecuencia = Counter(numeros)
         max_frecuencia = max(frecuencia.values())
-        # retorno el primer valor que tenga la frecuencia maxima
         for num in numeros:
             if frecuencia[num] == max_frecuencia:
                 return num
+
 
     def desviacion_estandar(self, numeros):
         # si la lista esta vacia retorno 0 como desviacion nula
